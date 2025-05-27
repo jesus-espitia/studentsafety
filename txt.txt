@@ -1,0 +1,52 @@
+studentsafety/
+│
+├── app/
+│   ├── __init__.py
+│   ├── routes/
+│   │   ├── qr_scanner.py         # Lógica de escaneo de QR y acceso
+│   │   └── admin_panel.py        # Interfaz de administración protegida
+│   ├── controllers/
+│   │   ├── acceso.py             # Validaciones para ingreso y citas
+│   │   └── base.py               # Conexión a la base de datos
+│   ├── templates/
+│   │   └── admin_panel.html      # Interfaz gráfica para el admin
+│   ├── static/
+│       └── style.css             # Estilos para el admin panel (opcional)
+│
+├── run.py                        # Script principal para correr Flask
+├── requirements.txt              # Librerías necesarias
+└── student_safety_db.sql         # Script SQL de la base de datos
+
+
+======================================================================================================
+
+studentsafety/
+│
+├── app/
+│   ├── controllers/
+│   │   ├── acceso.py
+│   │   └── base.py
+│   ├── views/
+│   │   └── admin_gui.py
+│   └── templates/              ← HTML aquí
+│       ├── base.html
+│       ├── login_admin.html
+│       ├── dashboard.html
+│       ├── usuarios.html
+│       ├── egresados.html
+│       ├── citas.html
+│       └── asistencias.html
+│   └── static/                 ← CSS y JS aquí
+│       ├── css/
+│       │   └── styles.css
+│       └── js/
+│           └── main.js
+│
+├── scanner/
+│   └── qr_scanner_gui.py       ← Escaneo QR con OpenCV y Tkinter
+│
+├── database/
+│   └── init_db.sql             ← Script de la base de datos
+│
+├── run.py                      ← Arranca la app Flask
+└── requirements.txt

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>StudentSafety</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>StudentSafety</h1>
+        <nav>
+            <a href="/dashboard">Inicio</a>
+            <a href="/usuarios">Usuarios</a>
+            <a href="/egresados">Egresados</a>
+            <a href="/citas">Citas</a>
+            <a href="/asistencias">Asistencias</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
