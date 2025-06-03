@@ -2,47 +2,44 @@
 CREATE DATABASE IF NOT EXISTS student_safety_db;
 USE student_safety_db;
 
--- Tabla principal de usuarios
-CREATE TABLE usuarios (
-    numero_documento VARCHAR(20) PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50) NOT NULL,
-    tipo ENUM('estudiante', 'profesor', 'admin') NOT NULL,
-    grado VARCHAR(10),             -- Solo estudiantes
-    grupo VARCHAR(10),             -- Solo estudiantes
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE DIRECTRICES (
+    documento_directriz INT PRIMARY KEY UNIQUE,
+    nombres_directriz VARCHAR(200) NOT NULL,
+    apellidos_directriz VARCHAR(200) NOT NULL,
+    cargo_directriz VARCHAR(200) NOT NULL,
+    nota VARCHAR(200) NULL
 );
 
--- Tabla de egresados
-CREATE TABLE egresados (
-    numero_documento VARCHAR(20) PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50) NOT NULL,
-    grado_egresado VARCHAR(10) NOT NULL,
-    grupo_egresado VARCHAR(10) NOT NULL,
-    año_graduacion INT NOT NULL,
-    documento_director_grupo VARCHAR(20),  -- FK a usuarios (profesor)
-    contacto VARCHAR(50),                  -- Email o teléfono
-    FOREIGN KEY (documento_director_grupo) REFERENCES usuarios(numero_documento)
+CREATE TABLE GRADO_GRUPO (
+    id_grado_grado INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    grado_grupo INT UNIQUE,
+    director_id INT NOT NULL,
+    FOREIGN KEY (director_id) REFERENCES DIRECTRICES(documento_directriz)
 );
 
--- Tabla de citas (para egresados)
-CREATE TABLE citas (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    documento_egresado VARCHAR(20) NOT NULL,
-    documento_profesor VARCHAR(20) NOT NULL,
-    fecha_cita DATETIME NOT NULL,
-    motivo TEXT,
-    estado ENUM('pendiente', 'confirmada', 'cancelada') DEFAULT 'pendiente',
-    FOREIGN KEY (documento_egresado) REFERENCES egresados(numero_documento),
-    FOREIGN KEY (documento_profesor) REFERENCES usuarios(numero_documento)
+CREATE TABLE PERSONAS (
+    documento_persona INT PRIMARY KEY UNIQUE,
+    nombres_persona VARCHAR(200) NOT NULL,
+    apellidos_persona VARCHAR(200) NOT NULL,
+    tipo_personas ENUM('estudiante','egresado') NOT NULL;
+    grado_grupo_id INT,
+    FOREIGN KEY (grado_grupo_id) REFERENCES GRADO_GRUPO(id_grado_grupo)
 );
 
--- Tabla de asistencias (ingreso únicamente)
-CREATE TABLE asistencias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    documento_usuario VARCHAR(20) NOT NULL,
-    tipo_usuario ENUM('estudiante', 'profesor', 'admin', 'egresado') NOT NULL,
-    fecha_ingreso TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    -- Nota: no se usa FK aquí porque documento puede estar en usuarios o egresados
+CREATE TABLE CITA (
+    id_cita INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    fechaHora_cita TIMESTAMP NOT NULL,
+    motivo_cita VARCHAR(200),
+    directrizEncargado_id INT,
+    personaCitada_id INT NOT NULL,
+    FOREIGN KEY (directrizEncargado_id) REFERENCES DIRECTRICES(documento_directriz),
+    FOREIGN KEY (personaCitada_id) REFERENCES PERSONAS(documento_persona)
 );
+
+CREATE TABLE ASISTENCIA (
+    id_asistencia INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    fechaHora TIMESTAMP NOT NULL,
+    persona_id INT NOT NULL,
+    FOREIGN KEY (persona_id) REFERENCES PERSONAS(documento_persona)
+);
+
