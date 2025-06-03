@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block content %}
-<div style="text-align: center; margin-top: 100px;">
-    <h2>Escanea tu código QR de administrador</h2>
-    <p>Por seguridad, el acceso solo es posible mediante QR.</p>
-    <img src="{{ url_for('static', filename='img/qr_admin_demo.png') }}" alt="QR demo" style="width:200px;">
-    <p><em>Abre la app del escáner para comenzar.</em></p>
-</div>
-{% endblock %}
