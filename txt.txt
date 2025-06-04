@@ -50,3 +50,7 @@ studentsafety/
 │
 ├── run.py                      ← Arranca la app Flask
 └── requirements.txt
+
+
+Este carnet es personal e intrasferible. permite el ingreso a la institucion de manera segura, Debe ser devuelto al finalizar su permanencia anual en la institucion
+en caso de perdida tiene un costo de resposicion.
