@@ -16,7 +16,8 @@ def registrar_asistencia():
         data = request.get_json()
         tipo = data.get('tipo')
         documento = data.get('documento')
-        nota = data.get('nota')
+        nombres = data.get('nombres')
+        apellidos = data.get('apellidos')
 
         if not tipo or not documento:
             return jsonify({'success': False, 'message': 'Datos incompletos en el QR.'})
@@ -24,9 +25,9 @@ def registrar_asistencia():
         conn = get_connection()
         cursor = conn.cursor()
 
-        # Buscar persona en base de datos
+        # Buscar persona en base de datos por documento_persona
         cursor.execute("""
-            SELECT id_personas, nombres_persona, apellidos_persona
+            SELECT documento_persona, nombres_persona, apellidos_persona
             FROM PERSONAS
             WHERE documento_persona = %s AND tipo_personas = %s
         """, (documento, tipo))
@@ -35,23 +36,25 @@ def registrar_asistencia():
         if not persona:
             return jsonify({'success': False, 'message': 'Persona no encontrada en la base de datos.'})
 
-        id_persona, nombres, apellidos = persona
+        documento_persona, nombres, apellidos = persona
 
-        # Registrar asistencia
+        # Registrar asistencia con documento_persona como clave foránea
         cursor.execute("""
-            INSERT INTO ASISTENCIA (fechaHora, persona_id)
-            VALUES (%s, %s)
-        """, (datetime.now(), id_persona))
+            INSERT INTO ASISTENCIA (fechaHora, persona_id, nombres_asistencia, apellidos_asistencia)
+            VALUES (%s, %s, %s, %s)
+        """, (datetime.now(), documento_persona, nombres, apellidos))
         conn.commit()
 
-        return jsonify({'success': True, 'message': f'¡Bienvenido/a {nombres} {apellidos}! Asistencia registrada. <br> Recuerda {nota}'})
+        return jsonify({'success': True, 'message': f'¡Bienvenido/a {nombres} {apellidos}! Asistencia registrada.'})
 
     except Exception as e:
         print("ERROR:", e)
         return jsonify({'success': False, 'message': 'Error en el servidor.'})
     finally:
-        if 'cursor' in locals(): cursor.close()
-        if 'conn' in locals(): conn.close()
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
 
 if __name__ == '__main__':
     app.run(debug=True)

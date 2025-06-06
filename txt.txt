@@ -54,3 +54,16 @@ studentsafety/
 
 Este carnet es personal e intrasferible. permite el ingreso a la institucion de manera segura, Debe ser devuelto al finalizar su permanencia anual en la institucion
 en caso de perdida tiene un costo de resposicion.
+
+
+
+host:
+bhp6h6iefsvbknltkx6s-mysql.services.clever-cloud.com
+DateBase name:
+bhp6h6iefsvbknltkx6s
+User:
+u9ucf8oxczf0sovw
+Password:
+6wNlYe0nUemci56Ec7lR
+Port:
+3306

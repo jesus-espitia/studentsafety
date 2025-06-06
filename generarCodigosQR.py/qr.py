@@ -2,11 +2,8 @@ import qrcode
 import json
 
 # Datos en formato JSON
-data = {
-    "documento": "123456789",
-    "tipo": "estudiante",
-    "nota":"Los QR son regulados, evita darle tu informacion a otras personas, evitate problemas judiciales"
-}
+data = {"tipo":"estudiante", "documento":2001, "nombres":"María", "apellidos":"Sánchez"}
+
 
 # Convertir los datos a una cadena JSON
 json_data = json.dumps(data)
