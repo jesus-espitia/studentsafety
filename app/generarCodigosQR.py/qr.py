@@ -2,7 +2,10 @@ import qrcode
 import json
 
 # Datos en formato JSON
-data = {"tipo":"estudiante", "documento":2001, "nombres":"María", "apellidos":"Sánchez"}
+#DIRECTRICES
+data = {"cargo":"directriz","documento":"1001", "nombres":"Laura", "apellidos":"Gómez"}
+#ESTUDIANTES
+#data = {"tipo":"estudiante", "documento":2001, "nombres":"María", "apellidos":"Sánchez"}
 
 
 # Convertir los datos a una cadena JSON
@@ -22,6 +25,6 @@ qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white")
 
 # Guardar la imagen
-img.save("persona_qr.png")
+img.save("directriz.png")
 
 print("QR generado y guardado como persona_qr.png")

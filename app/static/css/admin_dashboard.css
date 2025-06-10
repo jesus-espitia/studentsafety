@@ -1,0 +1,88 @@
+:root {
+    --primary: #0a3d62;
+    --accent: #38ada9;
+    --light: #f5f6fa;
+    --text: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light);
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 80px auto 120px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+select#grupo_id {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+select#grupo_id:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Botón estilo enlace */
+#ver-asistencias-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#ver-asistencias-link:hover {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+
+#error {
+    margin-top: 15px;
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Responsive básico */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 60px 20px 120px 20px;
+    }
+
+    select#grupo_id {
+        font-size: 15px;
+    }
+
+    #ver-asistencias-link {
+        width: 100%;
+    }
+}

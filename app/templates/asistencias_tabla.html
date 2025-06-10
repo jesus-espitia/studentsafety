@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Asistencias registradas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/asistencia_tabla.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}" async></script>
+</head>
+
+<body>
+    <header>
+        <h1>Asistencias del grupo</h1>
+    </header>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Fecha y Hora de ingreso</th>
+                <th>Nombre completo</th>
+                <th>Grado</th>
+                <th>Director</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in asistencias %}
+            <tr>
+                <td>{{ a.fechaHora }}</td>
+                <td>{{ a.nombres_persona }} {{ a.apellidos_persona }}</td>
+                <td>{{ a.grado_grupo }}</td>
+                <td>{{ a.nombres_directriz }} {{ a.apellidos_directriz }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/admin_dashboard">← Volver</a>
+    <footer>
+        <p>&copy; 2025 StudentSafety. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

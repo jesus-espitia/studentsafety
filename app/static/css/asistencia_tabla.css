@@ -1,0 +1,90 @@
+:root {
+    --primary: #0a3d62;
+    --accent: #38ada9;
+    --light: #f5f6fa;
+    --text: #ffffff;
+    --bg-table: #ffffff;
+    --border: #ccc;
+    --hover: #e8f0fe;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light);
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 1.8rem;
+    color: var(--primary);
+}
+
+table {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: var(--bg-table);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table thead {
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+table tbody tr:hover {
+    background-color: var(--hover);
+}
+
+/* Enlace volver */
+a[href="/admin_dashboard"] {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 60px auto;
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+a[href="/admin_dashboard"]:hover {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+/* Responsive básico */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+        width: 95%;
+    }
+
+    table th, table td {
+        padding: 10px;
+    }
+
+    a[href="/admin_dashboard"] {
+        width: 90%;
+        text-align: center;
+    }
+}

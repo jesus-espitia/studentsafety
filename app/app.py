@@ -1,60 +1,83 @@
 from flask import Flask, request, jsonify, render_template
+from flask import session
+from routes import qr_asistencia, admin_qr, verificar_clave, admin_dashboard, asistencias, ver_grupos
+import mysql.connector
 from flask_cors import CORS
 from db import get_connection
 from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = 'n8m$gub*(#)/YnhN!(N5t'
 CORS(app)
-
+#===================================================================================================
+#PAGINA DE INICIO
 @app.route('/')
 def index():
     return render_template('index.html')
+#===================================================================================================
+#===================================================================================================
+#ESCANER DE ASISTENCIAS
+@app.route('/escaner')
+def escaner():
+    return render_template('qr_asistencia.html')  # Asegúrate de que exista este archivo
 
 @app.route('/registrar_asistencia', methods=['POST'])
-def registrar_asistencia():
-    try:
-        data = request.get_json()
-        tipo = data.get('tipo')
-        documento = data.get('documento')
-        nombres = data.get('nombres')
-        apellidos = data.get('apellidos')
+def qr_asistencia_interface():
+    return qr_asistencia.registrar_asistencia()
 
-        if not tipo or not documento:
-            return jsonify({'success': False, 'message': 'Datos incompletos en el QR.'})
+#===================================================================================================
+#===================================================================================================
+# ADMINISTRADOR
 
-        conn = get_connection()
-        cursor = conn.cursor()
+@app.route('/admin_qr')
+def admin_qrs():
+    return render_template('admin_qr.html')
 
-        # Buscar persona en base de datos por documento_persona
-        cursor.execute("""
-            SELECT documento_persona, nombres_persona, apellidos_persona
-            FROM PERSONAS
-            WHERE documento_persona = %s AND tipo_personas = %s
-        """, (documento, tipo))
-        persona = cursor.fetchone()
+@app.route('/verificar_directriz', methods=['POST'])
+def verificar_directriz_interface():
+    return admin_qr.verificar_directriz()
 
-        if not persona:
-            return jsonify({'success': False, 'message': 'Persona no encontrada en la base de datos.'})
+#===================================================================================================
+#===================================================================================================
+#VERIFICACION DE CLAVE
 
-        documento_persona, nombres, apellidos = persona
+@app.route('/verificar_clave', methods=['POST'])
+def verificar_claves():
+    return verificar_clave.verificar_clave()
 
-        # Registrar asistencia con documento_persona como clave foránea
-        cursor.execute("""
-            INSERT INTO ASISTENCIA (fechaHora, persona_id, nombres_asistencia, apellidos_asistencia)
-            VALUES (%s, %s, %s, %s)
-        """, (datetime.now(), documento_persona, nombres, apellidos))
-        conn.commit()
+#===================================================================================================
+#===================================================================================================
+#PANEL DE ADMINISTRADOR
 
-        return jsonify({'success': True, 'message': f'¡Bienvenido/a {nombres} {apellidos}! Asistencia registrada.'})
+@app.route('/admin_dashboard')
+def admin_dashboards():
+    return admin_dashboard.admin_dashboard()
 
-    except Exception as e:
-        print("ERROR:", e)
-        return jsonify({'success': False, 'message': 'Error en el servidor.'})
-    finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'conn' in locals():
-            conn.close()
+#===================================================================================================
+#===================================================================================================
+#VERIFICAR Y MOSTRAR ASISTENCIA
+
+@app.route('/ver_asistencias')
+def ver_asistencia():
+    return asistencias.ver_asistencias()
+
+@app.route('/consultar_asistencias')
+def consultar_asistencia():
+    return asistencias.consultar_asistencias()
+
+#===================================================================================================
+#===================================================================================================
+#MOSTRAR GRUPOS
+
+@app.route('/api/grupos')
+def api_grupo():
+    return ver_grupos.api_grupos()
+
+
+
+    
+#===================================================================================================
+
 
 if __name__ == '__main__':
     app.run(debug=True)

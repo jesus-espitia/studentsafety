@@ -2,16 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Escáner QR - StudentSafety</title>
-    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <title>Inicio - StudentSafety</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="{{ url_for('static', filename='js/script.js') }}" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" async></script>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 </head>
 <body>
-    <h1>Escáner QR</h1>
-    <div id="reader"></div>
-    <div id="result"></div>
+
+    <header>
+        <h1>Bienvenido a StudentSafety</h1>
+        <p>Control inteligente de ingreso para instituciones educativas</p>
+    </header>
+
+    <main class="home-main">
+        <section class="intro">
+            <h2>¿Qué deseas hacer?</h2>
+            <div class="home-buttons">
+                <a href="/escaner" class="btn-primary">Escanear QR</a>
+                <a href="/admin_qr" class="btn-secondary">Área Administrativa</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 StudentSafety. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

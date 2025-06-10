@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asistencias por Grupo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <h2>Consultar Asistencias</h2>
+
+    <form method="get" action="/consultar_asistencias">
+        <label for="grupo">Selecciona un grupo:</label>
+        <select name="grupo_id" id="grupo" required>
+            <option value="">-- Seleccionar grupo --</option>
+            {% for grupo in grupos %}
+                <option value="{{ grupo.id_grado_grado }}">
+                    {{ grupo.grado_grupo }} - Dir: {{ grupo.nombres_directriz }} {{ grupo.apellidos_directriz }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit">Ver asistencias</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administrador - StudentSafety</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}" async></script>
+</head>
+
+<body>
+    
+    <header>
+    <h1>Bienvenido/a, {{ nombre_admin }}</h1>
+    <h2>Selecciona un grupo para ver asistencias:</h2>
+    </header>
+    <div class="container">
+        <select id="grupo_id">
+            <option value="">-- Seleccionar grupo --</option>
+        </select>
+        <br><br>
+        <a id="ver-asistencias-link" href="#" onclick="verAsistencias()">Ver asistencias</a>
+        <p id="error" style="color: red;"></p>
+    </div>
+        <footer>
+            <p>&copy; 2025 StudentSafety. Todos los derechos reservados.</p>
+        </footer>
+</body>
+
+</html>
