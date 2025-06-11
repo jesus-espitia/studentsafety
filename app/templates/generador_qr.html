@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar QR | StudentSafety</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/generador_qr.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <script src="{{ url_for('static', filename='js/generador_qr.js') }}" async></script>
+</head>
+<body>
+
+<header>
+    <h1>StudentSafety</h1>
+    <p>Generación y Registro de Códigos QR</p>
+</header>
+
+<main>
+    <div class="form-container">
+        <form method="POST" action="/generador_qr">
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select name="tipo" id="tipo" required onchange="toggleClave()">
+                    <option value="estudiante">Estudiante</option>
+                    <option value="directriz">Directriz</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="documento">Documento</label>
+                <input type="text" name="documento" id="documento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nombres">Nombres</label>
+                <input type="text" name="nombres" id="nombres" required>
+            </div>
+
+            <div class="form-group">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" name="apellidos" id="apellidos" required autocomplete="off">
+            </div>
+
+            <div class="form-group" id="clave-group">
+                <label for="clave">Clave de acceso</label>
+                <input type="password" name="clave" id="clave" autocomplete="off">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Generar QR</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <div class="table-switch">
+            <label for="tabla_tipo">Ver registros de:</label>
+            <select id="tabla_tipo" onchange="toggleTable()">
+                <option value="estudiantes">Estudiantes</option>
+                <option value="directrices">Directrices</option>
+            </select>
+        </div>
+
+        <!-- Tabla estudiantes -->
+        <table id="tabla_estudiantes">
+            <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre Completo</th>
+                    <th>Grado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for est in estudiantes %}
+                <tr>
+                    <td>{{ est.documento }}</td>
+                    <td>{{ est.nombre_completo }}</td>
+                    <td>
+                      {% if est.grado %}
+                        {{ est.grado }}
+                      {% else %}
+                        {{ "Egresado" if est.tipo_personas == "egresado" else "Sin grado" }}
+                      {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Tabla directrices -->
+        <table id="tabla_directrices" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre Completo</th>
+                    <th>Clave</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in directrices %}
+                <tr>
+                    <td>{{ d.documento_directriz }}</td>
+                    <td>{{ d.nombre_completo }}</td>
+                    <td>{{ d.clave_directriz }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 StudentSafety - IE La Independencia
+</footer>
+</body>
+</html>
+</html>

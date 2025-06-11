@@ -20,7 +20,7 @@ CREATE TABLE GRADO_GRUPO (
 );
 
 CREATE TABLE PERSONAS (
-    id_personas INT PRIMARY KEY NOT NULL,
+    id_personas INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     documento_persona INT UNIQUE,
     nombres_persona VARCHAR(200) NOT NULL,
     apellidos_persona VARCHAR(200) NOT NULL,
@@ -48,15 +48,21 @@ CREATE TABLE ASISTENCIA (
     FOREIGN KEY (persona_id) REFERENCES PERSONAS(documento_persona)
 );
 
+-- Uso de la base de datos
+USE student_safety_db;
 
 -- Inserciones en DIRECTRICES
-INSERT INTO DIRECTRICES (documento_directriz, nombres_directriz, apellidos_directriz, cargo_directriz, nota) VALUES
-(1001, 'Laura', 'Gómez', 'Orientadora escolar', 'Psicóloga especializada en adolescentes'),
-(1002, 'Carlos', 'Ramírez', 'Jefe de convivencia', 'Encargado de disciplina'),
-(1003, 'Marta', 'López', 'Coordinadora académica', 'Supervisa el rendimiento estudiantil'),
-(1004, 'Andrés', 'Martínez', 'Rector', 'Dirección general de la institución'),
-(1005, 'Ana', 'Castro', 'Psicóloga', 'Atención emocional de los estudiantes'),
-(1006, 'Jorge', 'Zapata', 'Inspector', 'Control de ingreso y comportamiento');
+INSERT INTO DIRECTRICES (documento_directriz, nombres_directriz, apellidos_directriz, cargo_directriz, nota, clave_directriz) VALUES
+(1001, 'Carlos', 'Martínez', 'Director General', 'Responsable del plantel', 'clave123'),
+(1002, 'Lucía', 'Gómez', 'Coordinadora Académica', NULL, 'clave456'),
+(1003, 'Roberto', 'Pérez', 'Orientador Escolar', 'Encargado de bienestar estudiantil', 'clave789'),
+(1004, 'Ana', 'Sánchez', 'Director de Seguridad', NULL, 'clave321'),
+(1005, 'Luis', 'Torres', 'Jefe de Disciplina', 'Encargado de sanciones', 'clave654'),
+(1006, 'María', 'Ramírez', 'Coordinadora de Grados', NULL, 'clave987'),
+(1007, 'Javier', 'Díaz', 'Subdirector Académico', NULL, 'clave147'),
+(1008, 'Paola', 'Morales', 'Psicóloga Institucional', 'Atención psicológica', 'clave258'),
+(1009, 'Esteban', 'Cruz', 'Inspector General', NULL, 'clave369'),
+(1010, 'Sofía', 'Vargas', 'Orientadora Vocacional', NULL, 'clave159');
 
 -- Inserciones en GRADO_GRUPO
 INSERT INTO GRADO_GRUPO (grado_grupo, director_id) VALUES
@@ -65,31 +71,47 @@ INSERT INTO GRADO_GRUPO (grado_grupo, director_id) VALUES
 (701, 3),
 (702, 4),
 (801, 5),
-(802, 6);
+(802, 6),
+(901, 7),
+(902, 8),
+(1001, 9),
+(1002, 10);
 
 -- Inserciones en PERSONAS
-INSERT INTO PERSONAS (id_personas, documento_persona, nombres_persona, apellidos_persona, tipo_personas, grado_grupo_id) VALUES
-(1, 2001, 'María', 'Sánchez', 'estudiante', 1),
-(2, 2002, 'Luis', 'Pérez', 'estudiante', 1),
-(3, 2003, 'Camila', 'Ríos', 'estudiante', 2),
-(4, 2004, 'Juan', 'Torres', 'egresado', NULL),
-(5, 2005, 'Sofía', 'Mejía', 'estudiante', 3),
-(6, 2006, 'Mateo', 'Díaz', 'egresado', NULL);
+INSERT INTO PERSONAS (documento_persona, nombres_persona, apellidos_persona, tipo_personas, grado_grupo_id) VALUES
+(2001, 'Juan', 'López', 'estudiante', 1),
+(2002, 'Camila', 'Rodríguez', 'estudiante', 1),
+(2003, 'Andrés', 'García', 'estudiante', 2),
+(2004, 'Santiago', 'Hernández', 'estudiante', 2),
+(2005, 'Valentina', 'Ruiz', 'estudiante', 3),
+(2006, 'Mariana', 'Flores', 'estudiante', 4),
+(2007, 'Sebastián', 'Jiménez', 'estudiante', 5),
+(2008, 'Mateo', 'Paredes', 'egresado', 6),
+(2009, 'Isabella', 'Castillo', 'egresado', 7),
+(2010, 'Daniel', 'Gutiérrez', 'egresado', 8);
 
 -- Inserciones en CITA
 INSERT INTO CITA (fechaHora_cita, motivo_cita, directrizEncargado_id, personaCitada_id) VALUES
-('2025-06-01 08:00:00', 'Bajo rendimiento académico', 3, 1),
-('2025-06-02 10:30:00', 'Conflicto con compañeros', 2, 2),
-('2025-06-03 09:15:00', 'Apoyo emocional', 5, 3),
-('2025-06-04 11:45:00', 'Seguimiento post-egreso', 1, 4),
-('2025-06-05 08:20:00', 'Citación por indisciplina', 6, 5),
-('2025-06-06 14:00:00', 'Asesoría vocacional', 5, 6);
+('2025-06-11 09:00:00', 'Reunión de seguimiento académico', 1, 1),
+('2025-06-11 10:00:00', 'Orientación psicológica', 8, 2),
+('2025-06-12 08:30:00', 'Reporte disciplinario', 5, 3),
+('2025-06-12 11:00:00', 'Reunión con padres de familia', 2, 4),
+('2025-06-13 09:15:00', 'Consulta vocacional', 10, 5),
+('2025-06-13 10:45:00', 'Evaluación de desempeño', 3, 6),
+('2025-06-14 09:00:00', 'Orientación de egreso', 7, 7),
+('2025-06-14 11:30:00', 'Seguimiento de exalumnos', 9, 8),
+('2025-06-15 08:00:00', 'Charla de seguridad', 4, 9),
+('2025-06-15 10:00:00', 'Asesoría de proyecto', 6, 10);
 
 -- Inserciones en ASISTENCIA
 INSERT INTO ASISTENCIA (fechaHora, nombres_asistencia, apellidos_asistencia, persona_id) VALUES
-('2025-06-01 07:50:00', 'María', 'Sánchez', 2001),
-('2025-06-01 07:55:00', 'Luis', 'Pérez', 2002),
-('2025-06-01 08:00:00', 'Camila', 'Ríos', 2003),
-('2025-06-01 08:05:00', 'Juan', 'Torres', 2004),
-('2025-06-01 08:10:00', 'Sofía', 'Mejía', 2005),
-('2025-06-01 08:15:00', 'Mateo', 'Díaz', 2006);
+('2025-06-10 07:00:00', 'Juan', 'López', 2001),
+('2025-06-10 07:00:00', 'Camila', 'Rodríguez', 2002),
+('2025-06-10 07:00:00', 'Andrés', 'García', 2003),
+('2025-06-10 07:00:00', 'Santiago', 'Hernández', 2004),
+('2025-06-10 07:00:00', 'Valentina', 'Ruiz', 2005),
+('2025-06-10 07:00:00', 'Mariana', 'Flores', 2006),
+('2025-06-10 07:00:00', 'Sebastián', 'Jiménez', 2007),
+('2025-06-10 07:00:00', 'Mateo', 'Paredes', 2008),
+('2025-06-10 07:00:00', 'Isabella', 'Castillo', 2009),
+('2025-06-10 07:00:00', 'Daniel', 'Gutiérrez', 2010);
