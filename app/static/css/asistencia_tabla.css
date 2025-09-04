@@ -1,90 +1,255 @@
-:root {
-    --primary: #0a3d62;
-    --accent: #38ada9;
-    --light: #f5f6fa;
-    --text: #ffffff;
-    --bg-table: #ffffff;
-    --border: #ccc;
-    --hover: #e8f0fe;
-}
-
+/* Estilos específicos para la página de tabla de asistencias */
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--light);
-    color: var(--primary);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #e3f2fd; /* Azul pastel muy claro */
+    padding-bottom: clamp(4rem, 8vw, 6rem); /* Espacio adaptable para el footer */
 }
 
-h2 {
-    text-align: center;
-    margin-top: 60px;
-    font-size: 1.8rem;
-    color: var(--primary);
+/* Contenedor principal para la tabla */
+.table-container {
+    flex: 1;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 0.6s ease-out;
 }
 
+/* Estilos de la tabla */
 table {
-    width: 90%;
-    max-width: 1000px;
-    margin: 30px auto;
+    width: 100%;
     border-collapse: collapse;
-    background-color: var(--bg-table);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    margin: clamp(1rem, 3vw, 1.5rem) 0;
+    background-color: white;
+    border-radius: clamp(10px, 2vw, 15px);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); /* Degradado azul administrativo */
+    color: white;
+}
+
+thead th {
+    padding: clamp(0.8rem, 2vw, 1.2rem);
+    text-align: left;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #e3f2fd; /* Azul pastel muy claro */
+    transition: all 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e3f2fd; /* Azul pastel muy claro */
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+tbody td {
+    padding: clamp(0.7rem, 1.8vw, 0.9rem);
+    color: #333;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Enlace de volver - corregido para evitar doble flecha */
+a[href="/admin_dashboard"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    padding: clamp(0.7rem, 2vw, 0.9rem) clamp(1.5rem, 4vw, 2rem);
+    border-radius: clamp(8px, 2vw, 12px);
+    transition: all 0.3s ease;
+    margin: clamp(1.5rem, 4vw, 2rem) auto;
+    max-width: fit-content;
+    background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%); /* Azul pastel a azul administrativo */
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    position: relative;
     overflow: hidden;
 }
 
-table thead {
-    background-color: var(--primary);
-    color: var(--text);
-}
-
-table th,
-table td {
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-}
-
-table tbody tr:hover {
-    background-color: var(--hover);
-}
-
-/* Enlace volver */
-a[href="/admin_dashboard"] {
-    display: block;
-    width: fit-content;
-    margin: 30px auto 60px auto;
-    padding: 10px 20px;
-    background-color: var(--primary);
-    color: var(--text);
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+a[href="/admin_dashboard"]::before {
+    content: "←";
+    margin-right: clamp(0.5rem, 1.5vw, 0.8rem);
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
 a[href="/admin_dashboard"]:hover {
-    background-color: var(--accent);
-    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(25, 118, 210, 0.4);
+    background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%); /* Azules más intensos */
 }
 
-/* Responsive básico */
+a[href="/admin_dashboard"]:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(25, 118, 210, 0.3);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media queries para diferentes tamaños de pantalla */
 @media (max-width: 768px) {
+    .table-container {
+        padding: clamp(1rem, 3vw, 1.5rem);
+    }
+    
     table {
-        font-size: 14px;
-        width: 95%;
+        font-size: 0.85rem;
     }
-
-    table th, table td {
-        padding: 10px;
+    
+    thead th,
+    tbody td {
+        padding: 0.6rem 0.4rem;
     }
-
+    
     a[href="/admin_dashboard"] {
-        width: 90%;
-        text-align: center;
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+        margin: 1.2rem auto;
     }
+}
+
+@media (max-width: 480px) {
+    .table-container {
+        padding: 0.8rem;
+    }
+    
+    /* Hacer tabla horizontalmente desplazable en móviles */
+    .table-container {
+        overflow-x: auto;
+        padding-bottom: clamp(0.5rem, 2vw, 1rem);
+    }
+    
+    table {
+        min-width: 600px;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.8rem;
+    }
+    
+    a[href="/admin_dashboard"] {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+        margin: 1rem auto;
+    }
+}
+
+/* Efecto para filas vacías */
+tbody tr:empty {
+    display: none;
+}
+
+/* Mensaje cuando no hay datos */
+tbody:empty::before {
+    content: "No hay registros de asistencias disponibles";
+    display: block;
+    text-align: center;
+    padding: 2rem;
+    color: #757575;
+    font-style: italic;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+/* Estilo para fechas y horas */
+tbody td:first-child {
+    font-weight: 500;
+    color: #0d47a1; /* Azul oscuro */
+    white-space: nowrap;
+}
+
+/* Estilo para nombres */
+tbody td:nth-child(2) {
+    font-weight: 500;
+}
+
+/* Animación para las filas al cargar */
+@keyframes rowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+tbody tr {
+    animation: rowFadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.2s; }
+tbody tr:nth-child(3) { animation-delay: 0.3s; }
+tbody tr:nth-child(4) { animation-delay: 0.4s; }
+tbody tr:nth-child(5) { animation-delay: 0.5s; }
+tbody tr:nth-child(6) { animation-delay: 0.6s; }
+tbody tr:nth-child(7) { animation-delay: 0.7s; }
+tbody tr:nth-child(8) { animation-delay: 0.8s; }
+tbody tr:nth-child(9) { animation-delay: 0.9s; }
+tbody tr:nth-child(10) { animation-delay: 1s; }
+
+/* Efecto de resaltado para filas importantes */
+tbody tr.highlight {
+    background-color: #e3f2fd; /* Azul pastel muy claro */
+    border-left: 4px solid #1976d2; /* Azul administrativo */
+}
+
+/* Contenedor para el botón de volver */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: clamp(1rem, 3vw, 1.5rem) 0;
+}
+
+/* Efecto de brillo en el botón */
+a[href="/admin_dashboard"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+a[href="/admin_dashboard"]:hover::after {
+    left: 100%;
 }

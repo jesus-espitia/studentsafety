@@ -1,8 +1,27 @@
 footer {
-    background-color: var(--primary);
-    color: var(--text);
+    background-color: #0d47a1; /* Azul oscuro */
+    color: white;
     text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+    padding: clamp(0.8rem, 2vw, 1.2rem); /* Padding adaptable */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+footer p {
+    margin: 0;
+    font-size: clamp(0.8rem, 1.8vw, 1rem); /* Tamaño de fuente adaptable */
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    footer {
+        padding: 0.8rem;
+    }
+    
+    footer p {
+        font-size: 0.75rem;
+    }
 }

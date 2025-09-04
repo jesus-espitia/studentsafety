@@ -5,7 +5,7 @@ import json
 #DIRECTRICES
 data = {"cargo":"directriz","documento":"1001", "nombres":"Laura", "apellidos":"Gómez"}
 #ESTUDIANTES
-data = {"tipo":"estudiante", "documento":2001, "nombres":"María", "apellidos":"Sánchez"}
+data = {"tipo":"estudiante", "documento":"2001", "nombres":"María", "apellidos":"Sánchez"}
 
 
 # Convertir los datos a una cadena JSON

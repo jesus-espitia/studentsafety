@@ -1,19 +1,40 @@
-:root {
-    --primary: #0a3d62;
-    --accent: #38ada9;
-    --light: #f5f6fa;
-    --text: #ffffff;
-}
-
+/* Estilos específicos para la página del escáner QR */
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--light);
-    color: var(--primary);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #e3f2fd; /* Azul pastel muy claro */
+    padding-bottom: clamp(4rem, 8vw, 6rem); /* Espacio adaptable para el footer */
+}
+
+/* Ajustes específicos para el header en esta página */
+header {
+    position: relative;
+    padding-bottom: clamp(1rem, 3vw, 1.5rem);
+}
+
+header .admin-link {
+    position: absolute;
+    top: clamp(1rem, 3vw, 1.5rem);
+    right: clamp(1rem, 3vw, 2rem);
+    background-color: #bbdefb; /* Azul pastel claro */
+    color: #0d47a1; /* Azul oscuro */
+    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 2.5vw, 1.5rem);
+    border-radius: clamp(4px, 1vw, 6px);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    transition: all 0.3s ease;
+    border: 1px solid #90caf9;
+}
+
+header .admin-link:hover {
+    background-color: #90caf9; /* Azul pastel más fuerte */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -21,44 +42,155 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem 1rem;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 #reader {
     width: 100%;
-    max-width: 500px;
-    margin: 2rem auto;
-    border: 4px solid var(--accent);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    background-color: #fff;
+    max-width: clamp(300px, 80vw, 500px);
+    height: clamp(250px, 60vw, 400px);
+    border-radius: clamp(10px, 2vw, 15px);
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background-color: #f5f5f5;
+    position: relative;
+    border: 2px solid #90caf9; /* Borde azul pastel */
+}
+
+#reader::before {
+    content: "Cargando escáner...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #0d47a1;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: bold;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#reader video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #result {
-    margin-top: 1rem;
-    font-size: 1.2rem;
+    width: 100%;
+    max-width: clamp(300px, 80vw, 500px);
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+    min-height: 0;
+    display: none; /* Oculto por defecto */
+    color: #333;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    border: none;
+    transition: all 0.3s ease;
 }
 
-.error {
-    color: red;
+/* Mostrar #result solo cuando tiene contenido */
+#result:not(:empty) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    background-color: white;
+    border-radius: clamp(8px, 2vw, 12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    min-height: clamp(60px, 15vw, 100px);
+    border-left: 5px solid #42a5f5; /* Azul pastel medio */
 }
 
-.ok {
-    color: green;
+#result.success:not(:empty) {
+    background-color: #e8f5e9; /* Verde pastel */
+    border-left-color: #4caf50; /* Verde */
+    color: #2e7d32; /* Verde oscuro */
 }
 
-.admin-link {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--accent);
-    color: var(--text);
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+#result.error:not(:empty) {
+    background-color: #ffebee; /* Rojo pastel */
+    border-left-color: #f44336; /* Rojo */
+    color: #c62828; /* Rojo oscuro */
 }
 
-.admin-link:hover {
-    background-color: #218c89;
+/* Mensaje de ayuda inicial */
+main::after {
+    content: "Apunte la cámara hacia el código QR";
+    color: #0d47a1;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-weight: 500;
+    text-align: center;
+    opacity: 0.8;
+    margin-top: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* Ocultar mensaje cuando hay resultado */
+#result:not(:empty) + main::after {
+    display: none;
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    header .admin-link {
+        position: static;
+        display: block;
+        margin: clamp(0.5rem, 2vw, 1rem) auto 0;
+        width: fit-content;
+    }
+    
+    header {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    #reader {
+        height: clamp(200px, 50vw, 300px);
+    }
+    
+    #result:not(:empty) {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animación para el resultado */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#result:not(:empty) {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Estilos para SweetAlert2 */
+.swal2-popup {
+    border-radius: clamp(8px, 2vw, 12px) !important;
+    font-size: clamp(0.9rem, 2vw, 1rem) !important;
+}
+
+.swal2-title {
+    color: #0d47a1 !important;
+}
+
+.swal2-confirm {
+    background-color: #42a5f5 !important;
+    border-radius: clamp(4px, 1vw, 6px) !important;
+    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 2.5vw, 1.5rem) !important;
+}
+
+.swal2-cancel {
+    border-radius: clamp(4px, 1vw, 6px) !important;
+    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 2.5vw, 1.5rem) !important;
 }
