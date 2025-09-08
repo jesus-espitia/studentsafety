@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes de Asistencias - StudentSafety</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/documento_excel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenido/a, {{ nombre_admin }}</h1>
+        <h2>Selecciona un grupo para descargar plantilla:</h2>
+    </header>
+    <h1>📊 Reporte de Asistencias</h1>
+    <p>Selecciona un grado para descargar el informe en Excel:</p>
+
+    <form method="POST" action="/descargar_asistencias">
+        <label for="grado_id">Grado y Grupo:</label>
+        <select name="grado_id" id="grado_id" required>
+            {% for g in grados %}
+            <option value="{{ g.id_grado_grado }}">
+                Grado {{ g.grado_grupo }} - Dirigido por {{ g.director }}
+            </option>
+            {% endfor %}
+        </select>
+        <button type="submit"> Descargar Excel</button>
+    </form>
+
+
+    <footer>
+        <p>&copy; 2025 StudentSafety. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

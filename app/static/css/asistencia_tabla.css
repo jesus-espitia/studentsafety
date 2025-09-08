@@ -7,13 +7,50 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #e3f2fd; /* Azul pastel muy claro */
-    padding-bottom: clamp(4rem, 8vw, 6rem); /* Espacio adaptable para el footer */
+    padding-bottom: clamp(3rem, 6vw, 4rem); /* Espacio adaptable para el footer */
 }
 
-/* Contenedor principal para la tabla */
-.table-container {
+/* Ajustes específicos para el header en esta página */
+header {
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%); /* Degradado azul administrativo */
+    color: white;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+}
+
+header a {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 2.5vw, 1.5rem);
+    border-radius: clamp(5px, 1.2vw, 8px);
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+header a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor principal */
+.main-container {
     flex: 1;
-    padding: clamp(1.5rem, 4vw, 2.5rem);
+    padding: clamp(1.5rem, 4vw, 2rem);
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -45,7 +82,6 @@ thead th {
     position: sticky;
     top: 0;
     z-index: 10;
-    letter-spacing: 0.5px;
 }
 
 tbody tr {
@@ -67,22 +103,21 @@ tbody td {
     padding: clamp(0.7rem, 1.8vw, 0.9rem);
     color: #333;
     font-size: clamp(0.85rem, 2vw, 0.95rem);
-    border-bottom: 1px solid #f0f0f0;
 }
 
-/* Enlace de volver - corregido para evitar doble flecha */
+/* Enlace de volver */
 a[href="/admin_dashboard"] {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: clamp(0.4rem, 1vw, 0.6rem);
     color: white;
     text-decoration: none;
     font-weight: 600;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
-    padding: clamp(0.7rem, 2vw, 0.9rem) clamp(1.5rem, 4vw, 2rem);
+    padding: clamp(0.7rem, 2vw, 0.9rem) clamp(1.2rem, 3vw, 1.5rem);
     border-radius: clamp(8px, 2vw, 12px);
     transition: all 0.3s ease;
-    margin: clamp(1.5rem, 4vw, 2rem) auto;
+    margin: clamp(1rem, 3vw, 1.5rem) auto;
     max-width: fit-content;
     background: linear-gradient(135deg, #42a5f5 0%, #1976d2 100%); /* Azul pastel a azul administrativo */
     box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
@@ -92,7 +127,6 @@ a[href="/admin_dashboard"] {
 
 a[href="/admin_dashboard"]::before {
     content: "←";
-    margin-right: clamp(0.5rem, 1.5vw, 0.8rem);
     font-size: clamp(1.2rem, 3vw, 1.5rem);
 }
 
@@ -121,7 +155,20 @@ a[href="/admin_dashboard"]:active {
 
 /* Media queries para diferentes tamaños de pantalla */
 @media (max-width: 768px) {
-    .table-container {
+    header {
+        padding: clamp(0.8rem, 2.5vw, 1.2rem);
+    }
+    
+    header h1 {
+        font-size: 1.4rem;
+    }
+    
+    header a {
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .main-container {
         padding: clamp(1rem, 3vw, 1.5rem);
     }
     
@@ -135,19 +182,27 @@ a[href="/admin_dashboard"]:active {
     }
     
     a[href="/admin_dashboard"] {
-        font-size: 1rem;
-        padding: 0.7rem 1.5rem;
-        margin: 1.2rem auto;
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    .table-container {
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    header a {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.8rem;
+    }
+    
+    .main-container {
         padding: 0.8rem;
     }
     
     /* Hacer tabla horizontalmente desplazable en móviles */
-    .table-container {
+    .main-container {
         overflow-x: auto;
         padding-bottom: clamp(0.5rem, 2vw, 1rem);
     }
@@ -163,9 +218,8 @@ a[href="/admin_dashboard"]:active {
     }
     
     a[href="/admin_dashboard"] {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
-        margin: 1rem auto;
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
     }
 }
 
@@ -231,14 +285,7 @@ tbody tr.highlight {
     border-left: 4px solid #1976d2; /* Azul administrativo */
 }
 
-/* Contenedor para el botón de volver */
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin: clamp(1rem, 3vw, 1.5rem) 0;
-}
-
-/* Efecto de brillo en el botón */
+/* Efecto de brillo en el botón volver */
 a[href="/admin_dashboard"]::after {
     content: "";
     position: absolute;

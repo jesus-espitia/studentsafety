@@ -4,7 +4,7 @@ import qrcode
 import json
 from io import BytesIO
 from flask import session
-from routes import qr_asistencia, admin_qr, verificar_clave, admin_dashboard, asistencias, ver_grupos, generar_qr
+from routes import qr_asistencia, admin_qr, verificar_clave, admin_dashboard, asistencias, ver_grupos, generar_qr, documento_excel
 import mysql.connector
 from flask_cors import CORS
 from db import get_connection
@@ -23,7 +23,7 @@ def index():
 #ESCANER DE ASISTENCIAS
 @app.route('/escaner')
 def escaner():
-    return render_template('qr_asistencia.html')  # Asegúrate de que exista este archivo
+    return render_template('qr_asistencia.html')  
 
 @app.route('/registrar_asistencia', methods=['POST'])
 def qr_asistencia_interface():
@@ -84,6 +84,16 @@ def api_grupo():
 def creador_de_qr():
     return generar_qr.generar_qr_pa()
 
+#===================================================================================================
+#===================================================================================================
+#PÁGINA DE DESCARGA DE EXCEL
+@app.route('/reportes_asistencias')
+def reportes_asistencias():
+    return documento_excel.vista_reportes()
+
+@app.route('/descargar_asistencias', methods=['POST'])
+def descargar_asistencia_excel():
+    return documento_excel.descargar_asistencias()
 #===================================================================================================
 
 
