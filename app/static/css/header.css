@@ -16,19 +16,4 @@ header h1 {
     line-height: 1.2;
 }
 
-header p {
-    margin: clamp(0.5rem, 1vw, 1rem) 0 0;
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem); /* Tamaño de fuente adaptable */
-    font-weight: 300;
-}
 
-/* Ajustes para pantallas muy pequeñas */
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.8rem;
-    }
-    
-    header p {
-        font-size: 0.9rem;
-    }
-}

@@ -2,27 +2,50 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio - StudentSafety</title>
+    <title>Inicio | StudentSafety</title>
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
+</head>
+
+<body>
     <header>
-        <h1>Bienvenido a StudentSafety</h1>
-        <p>Control inteligente de ingreso para instituciones educativas</p>
+        <div class="logo_header">
+            <img src="../static/img/logo.png" alt="logo"><p>StudentSafety</p>
+        </div>
+        <div class="home-buttons">
+            <a href="/escaner" class="btn-primary">Escanear QR</a>
+            <a href="/admin_qr" class="btn-secondary">Área Administrativa</a>
+            <a href="/registro">Registro</a>
+        </div>
     </header>
 
     <main class="home-main">
         <section class="intro">
-            <h2>¿Qué deseas hacer?</h2>
-            <div class="home-buttons">
-                <a href="/escaner" class="btn-primary">Escanear QR</a>
-                <a href="/admin_qr" class="btn-secondary">Área Administrativa</a>
+            <p>Control inteligente de ingreso para instituciones educativas</p>
+        </section>
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Seguridad</h3>
+                <p>Protección confiable para estudiantes y personal.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-qrcode"></i>
+                <h3>Acceso Rápido</h3>
+                <p>Ingreso ágil mediante escaneo de códigos QR.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Gestión Eficiente</h3>
+                <p>Reportes y control en tiempo real.</p>
             </div>
         </section>
+
+
     </main>
 
     <footer>

@@ -67,3 +67,6 @@ Password:
 6wNlYe0nUemci56Ec7lR
 Port:
 3306
+
+==================================================================================================================
+FALTAN TEMAS POR MEJORAR PARA LA SEGURIDAD DE LA PAGINA.

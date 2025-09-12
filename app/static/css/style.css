@@ -1,120 +1,252 @@
-body {
-    font-family: 'Arial', sans-serif;
+/* Estilos generales */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #e3f2fd; /* Azul pastel muy claro */
-    padding-bottom: clamp(4rem, 8vw, 6rem); /* Espacio adaptable para el footer */
-}
-
-.home-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: clamp(1rem, 4vw, 3rem); /* Padding adaptable */
-    margin-bottom: clamp(3rem, 6vw, 5rem); /* Margen adaptable */
-}
-
-.intro {
-    text-align: center;
-    background-color: white;
-    padding: clamp(1.5rem, 5vw, 3rem); /* Padding adaptable */
-    border-radius: clamp(8px, 2vw, 12px); /* Radio adaptable */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 90%; /* Ancho adaptable */
     box-sizing: border-box;
 }
 
-.intro h2 {
-    color: #0d47a1; /* Azul oscuro */
-    margin-bottom: clamp(1rem, 3vw, 2rem); /* Margen adaptable */
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Tamaño de fuente adaptable */
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo_header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo_header img {
+    height: 50px;
+    width: auto;
+}
+
+.logo_header p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f6f7f8;
 }
 
 .home-buttons {
     display: flex;
-    flex-direction: column;
-    gap: clamp(1rem, 3vw, 1.5rem); /* Espacio adaptable entre botones */
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
-    display: block;
-    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 4vw, 2.5rem); /* Padding adaptable */
-    border-radius: clamp(5px, 1vw, 8px); /* Radio adaptable */
+.home-buttons a {
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
     text-decoration: none;
-    font-weight: bold;
-    text-align: center;
+    font-weight: 600;
     transition: all 0.3s ease;
-    font-size: clamp(1rem, 2.5vw, 1.1rem); /* Tamaño de fuente adaptable */
-    box-sizing: border-box;
+    font-size: 0.9rem;
 }
 
 .btn-primary {
-    background-color: #42a5f5; /* Azul pastel medio */
+    background-color: #3498db;
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #1e88e5; /* Azul más fuerte */
+    background-color: #2980b9;
 }
 
 .btn-secondary {
-    background-color: #bbdefb; /* Azul pastel claro */
-    color: #0d47a1; /* Azul oscuro */
-    border: 1px solid #90caf9; /* Borde azul pastel */
+    background-color: #2ecc71;
+    color: white;
 }
 
 .btn-secondary:hover {
-    background-color: #90caf9; /* Azul pastel más fuerte */
+    background-color: #27ae60;
 }
 
-/* Media queries para diferentes tamaños de pantalla */
-@media (min-width: 768px) {
+.home-buttons a:not(.btn-primary):not(.btn-secondary) {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.home-buttons a:not(.btn-primary):not(.btn-secondary):hover {
+    background-color: #d0d0d0;
+}
+
+/* Main */
+.home-main {
+    flex: 1;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+.intro p {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Features */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.feature-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+}
+
+.feature-card p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+/* Media Queries para diferentes dispositivos */
+
+/* Dispositivos pequeños (móviles) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo_header {
+        margin-bottom: 1rem;
+    }
+    
     .home-buttons {
-        flex-direction: row;
         justify-content: center;
     }
     
-    .btn-primary, .btn-secondary {
-        width: 45%; /* Ancho adaptable en pantallas grandes */
-        min-width: 200px; /* Ancho mínimo */
-    }
-}
-
-@media (max-width: 767px) {
-    .btn-primary, .btn-secondary {
-        width: 100%; /* Ancho completo en móviles */
-    }
-}
-
-/* Ajustes para pantallas muy pequeñas */
-@media (max-width: 480px) {
-    .intro {
-        width: 95%;
-        padding: 1.5rem;
-    }
-    
-    .intro h2 {
+    .intro p {
         font-size: 1.5rem;
     }
     
-    .btn-primary, .btn-secondary {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card {
+        max-width: 100%;
+        width: 100%;
     }
 }
 
-/* Ajustes para pantallas grandes */
-@media (min-width: 1200px) {
-    .intro {
-        max-width: 800px;
+/* Dispositivos muy pequeños */
+@media (max-width: 480px) {
+    .logo_header img {
+        height: 40px;
     }
     
-    .home-buttons {
-        gap: 2rem;
+    .logo_header p {
+        font-size: 1rem;
+    }
+    
+    .home-buttons a {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .intro p {
+        font-size: 1.3rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .feature-card i {
+        font-size: 2rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .features {
+        gap: 1.5rem;
+    }
+    
+    .feature-card {
+        max-width: 300px;
+    }
+}
+
+/* Dispositivos grandes */
+@media (min-width: 1025px) {
+    .home-main {
+        padding: 3rem 2rem;
+    }
+    
+    .intro p {
+        font-size: 2.2rem;
+    }
+    
+    .features {
+        gap: 2.5rem;
     }
 }
