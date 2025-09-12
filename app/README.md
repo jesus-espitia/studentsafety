@@ -8,7 +8,6 @@
     - "**/**" Ruta de inicio, Pagina principal.
     - "**/escaner**" Control de acceso (asistencia) para estudiantes.
     - "**/admin_qr**" Ruta para acceder al panel de administrador con doble factor de autentificación
-    
     - "**/admin_dashboard**" Ruta para la interfaz del panel de administración, donde un administrador ingresa con su nombre desde el inicio de seccion. puede entrar, seleccionar y luego consultar las asitencias de los grupos en la 'BD'
     - "**/consultar_asistencias**" Lista los grupos recibidos y busca las asistencias de esos grupos en la 'BD'
     - "**/api/grupo**" Ruta "Experimetal" (No interfaz) Menús desplegables
