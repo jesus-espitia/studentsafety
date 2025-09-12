@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Panel de Administrador - StudentSafety</title>
+    <title>Panel de Administrador | StudentSafety</title>
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
@@ -12,22 +12,32 @@
 </head>
 
 <body>
-    
+
     <header>
-    <h1>Bienvenido/a, {{ nombre_admin }}</h1>
-    <h2>Selecciona un grupo para ver asistencias:</h2>
+        <div class="logo_header">
+            <img src="../static/img/logo.png" alt="logo">
+            <p>StudentSafety</p>
+        </div>
+        <div class="home-buttons">
+            <a href="/logout" class="btn-primary">Cerrar Seccion</a>
+            <a href="javascript:history.back()">Atrás</a>
+        </div>
     </header>
-    <div class="container">
-        <select id="grupo_id">
-            <option value="">-- Seleccionar grupo --</option>
-        </select>
-        <br><br>
-        <a id="ver-asistencias-link" href="#" onclick="verAsistencias()">Ver asistencias</a>
-        <p id="error" style="color: red;"></p>
+    <div class="selecionador">
+        <h1>Bienvenido/a, {{ nombre_admin }}</h1>
+        <h2>Selecciona un grupo para ver asistencias:</h2>
+        <div class="container">
+            <select id="grupo_id">
+                <option value="">-- Seleccionar grupo --</option>
+            </select>
+            <br><br>
+            <a id="ver-asistencias-link" href="#" onclick="verAsistencias()">Ver asistencias</a>
+            <p id="error" style="color: red;"></p>
+        </div>
     </div>
-        <footer>
-            <p>&copy; 2025 StudentSafety. Todos los derechos reservados.</p>
-        </footer>
+    <footer>
+        <p>&copy; 2025 StudentSafety. Todos los derechos reservados.</p>
+    </footer>
 </body>
 
 </html>
