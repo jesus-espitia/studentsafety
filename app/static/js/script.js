@@ -6,7 +6,7 @@ function onScanSuccess(decodedText, decodedResult) {
     } catch (e) {
         Swal.fire({
             title: "Código inválido",
-            text: "El código QR no contiene un JSON válido.",
+            text: "El código QR no tiene información válida.",
             icon: "error"
         });
         return;

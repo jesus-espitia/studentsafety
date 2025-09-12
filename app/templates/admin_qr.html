@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Verificación Admin - StudentSafety</title>
+    <title>Verificación Admin | StudentSafety</title>
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_qr.css') }}">
@@ -15,9 +15,15 @@
 
 <body>
     <header>
-        <h1>StudentSafety</h1>
-        <p>Escáner QR para control de acceso</p>
-        <a href="/admin_qr" class="admin-link">Área de administrador</a>
+        <div class="logo_header">
+            <img src="../static/img/logo.png" alt="logo">
+            <p>StudentSafety</p>
+        </div>
+        <div class="home-buttons">
+            <a href="/escaner" class="btn-primary">Escaner QR</a>
+            <a href="/registro" class="btn-secondary">Registro</a>
+            <a href="/">Atrás</a>
+        </div>
     </header>
     
     <main>
