@@ -12,13 +12,20 @@
 
 <body>
     <header>
-        <h1>Bienvenido/a, {{ nombre_admin }}</h1>
-        <h2>Selecciona un grupo para descargar plantilla:</h2>
+        <div class="logo_header">
+            <img src="../static/img/logo.png" alt="logo">
+            <p>StudentSafety</p>
+        </div>
+        <div class="home-buttons">
+            <a href="javascript:history.back()">Atrás</a>
+        </div>
     </header>
-    <h1>📊 Reporte de Asistencias</h1>
-    <p>Selecciona un grado para descargar el informe en Excel:</p>
+    <h1>Bienvenido/a, {{ nombre_admin }}</h1>
+    <h3>📊 Reporte de Asistencias</h3>
+
 
     <form method="POST" action="/descargar_asistencias">
+        <p>Selecciona un grado para descargar el informe en Excel:</p>
         <label for="grado_id">Grado y Grupo:</label>
         <select name="grado_id" id="grado_id" required>
             {% for g in grados %}
