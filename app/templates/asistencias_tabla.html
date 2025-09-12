@@ -13,10 +13,18 @@
 
 <body>
     <header>
-        <h1>Asistencias del grupo</h1>
-        <a href="/reportes_asistencias"> Descargar Asistencia</a>
+        <div class="logo_header">
+            <img src="../static/img/logo.png" alt="logo">
+            <p>StudentSafety</p>
+        </div>
+        <div class="home-buttons">
+            <a href="/reportes_asistencias" class="btn-primary">Descargar Asistencia</a>
+            <a href="/generador_qr" class="btn-secondary">Generar QR</a>
+            <a href="javascript:history.back()">Atrás</a>
+        </div>
     </header>
     <table border="1">
+        <h1>Asistencias del grupo</h1>
         <thead>
             <tr>
                 <th>Fecha y Hora de ingreso</th>
@@ -36,8 +44,7 @@
             {% endfor %}
         </tbody>
     </table>
-
-    <a href="/admin_dashboard"> Volver</a>
+    <br><br><br><br>
     <footer>
         <p>&copy; 2025 StudentSafety. Todos los derechos reservados.</p>
     </footer>
