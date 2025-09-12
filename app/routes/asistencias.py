@@ -4,22 +4,6 @@ from db import get_connection
 from datetime import datetime
 
 
-def ver_asistencias():
-    conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
-
-    # Obtener todos los grados/grupos disponibles
-    cursor.execute("""
-        SELECT GG.id_grado_grado, GG.grado_grupo, D.nombres_directriz, D.apellidos_directriz
-        FROM GRADO_GRUPO GG
-        JOIN DIRECTRICES D ON GG.director_id = D.id_directrices
-    """)
-    grupos = cursor.fetchall()
-
-    cursor.close()
-    conn.close()
-
-    return render_template('ver_asistencias.html', grupos=grupos)
 
 def consultar_asistencias():
     grupo_id = request.args.get('grupo_id')

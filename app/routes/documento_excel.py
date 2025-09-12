@@ -1,4 +1,4 @@
-from flask import render_template, Response, request
+from flask import render_template, Response, request, session
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 import io
@@ -6,6 +6,7 @@ from db import get_connection
 
 def vista_reportes():
     conn = get_connection()
+    nombre_admin = session.get('nombre_admin', 'Administrador')
     cursor = conn.cursor(dictionary=True)
     cursor.execute("""
         SELECT g.id_grado_grado, g.grado_grupo,
@@ -16,7 +17,7 @@ def vista_reportes():
     grados = cursor.fetchall()
     conn.close()
 
-    return render_template("reportes_asistencias.html", grados=grados)
+    return render_template("reportes_asistencias.html", grados=grados, nombre_admin=nombre_admin)
 
 
 def descargar_asistencias():

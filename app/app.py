@@ -18,6 +18,7 @@ CORS(app)
 @app.route('/')
 def index():
     return render_template('index.html')
+
 #===================================================================================================
 #===================================================================================================
 #ESCANER DE ASISTENCIAS
@@ -32,7 +33,6 @@ def qr_asistencia_interface():
 #===================================================================================================
 #===================================================================================================
 # ADMINISTRADOR
-
 @app.route('/admin_qr')
 def admin_qrs():
     return render_template('admin_qr.html')
@@ -44,7 +44,6 @@ def verificar_directriz_interface():
 #===================================================================================================
 #===================================================================================================
 #VERIFICACION DE CLAVE
-
 @app.route('/verificar_clave', methods=['POST'])
 def verificar_claves():
     return verificar_clave.verificar_clave()
@@ -52,7 +51,6 @@ def verificar_claves():
 #===================================================================================================
 #===================================================================================================
 #PANEL DE ADMINISTRADOR
-
 @app.route('/admin_dashboard')
 def admin_dashboards():
     return admin_dashboard.admin_dashboard()
@@ -60,11 +58,6 @@ def admin_dashboards():
 #===================================================================================================
 #===================================================================================================
 #VERIFICAR Y MOSTRAR ASISTENCIA
-
-@app.route('/ver_asistencias')
-def ver_asistencia():
-    return asistencias.ver_asistencias()
-
 @app.route('/consultar_asistencias')
 def consultar_asistencia():
     return asistencias.consultar_asistencias()
@@ -72,7 +65,6 @@ def consultar_asistencia():
 #===================================================================================================
 #===================================================================================================
 #MOSTRAR GRUPOS
-
 @app.route('/api/grupos')
 def api_grupo():
     return ver_grupos.api_grupos()

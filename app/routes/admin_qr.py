@@ -22,5 +22,6 @@ def verificar_directriz():
         session['nombre_admin'] = nombre_completo
 
         return jsonify({'success': True, 'message': 'Directriz verificada'})
+    
     else:
         return jsonify({'success': False, 'message': 'No autorizado. QR no corresponde a una directriz'})
