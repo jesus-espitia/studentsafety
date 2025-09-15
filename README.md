@@ -1,11 +1,12 @@
 ## STUDENTSAFETS
 - ### RUTAS RELEVANTES "No Interfaz":
-    - "**/registrar_asistencia**" (Metodo no Permitido). Ruta para la busqueda de personas en la 'DB' y luego se registra su asistencia.
-    - "**/verificar_directriz**" (Metodo no Permitido). Ruta donde se verifica la existencia de un documento en el QR, Si el documento pertenece a un directriz. Guarda el nombre completo y devuelve una respuesta JSON:true
-    - "**/verificar_clave**" (Metodo no Permitido). Ruta en donde se valida que el documento ingresado por QR coincide con uno ya existente en la 'BD'
+    - "**/registrar_asistencia**" Ruta para la busqueda de personas en la 'DB' y luego se registra su asistencia.
+    - "**/verificar_directriz**"  Ruta donde se verifica la existencia de un documento en el QR, Si el documento pertenece a un directriz. Guarda el nombre completo y devuelve una respuesta JSON:true
+    - "**/verificar_clave**" Ruta en donde se valida que el documento ingresado por QR coincide con uno ya existente en la 'BD'
 
 - ### RUTAS RELEVANTES "Interfaz":
     - "**/**" Ruta de inicio, Pagina principal.
+    [Inicio]: /
     - "**/escaner**" Control de acceso (asistencia) para estudiantes.
     - "**/admin_qr**" Ruta para acceder al panel de administrador con doble factor de autentificación
     - "**/admin_dashboard**" Ruta para la interfaz del panel de administración, donde un administrador ingresa con su nombre desde el inicio de seccion. puede entrar, seleccionar y luego consultar las asitencias de los grupos en la 'BD'
