@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, url_for, redirect
 from flask import send_file
 import qrcode
 import json
@@ -87,6 +87,12 @@ def reportes_asistencias():
 def descargar_asistencia_excel():
     return documento_excel.descargar_asistencias()
 #===================================================================================================
+
+@app.route('/logout')
+def admin_logout():
+    session.pop('is_admin', None)
+    session.pop('nombre_admin', None)
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

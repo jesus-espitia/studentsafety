@@ -70,3 +70,10 @@ Port:
 
 ==================================================================================================================
 FALTAN TEMAS POR MEJORAR PARA LA SEGURIDAD DE LA PAGINA.
+
+
+@app.route('/logout')
+def admin_logout():
+    session.pop('is_admin', None)
+    session.pop('nombre_admin', None)
+    return redirect(url_for('index'))
