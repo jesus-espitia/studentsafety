@@ -77,3 +77,6 @@ def admin_logout():
     session.pop('is_admin', None)
     session.pop('nombre_admin', None)
     return redirect(url_for('index'))
+
+Interprete
+Python: Select Interpreter
