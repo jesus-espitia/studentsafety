@@ -19,7 +19,7 @@ function onScanSuccess(decodedText, decodedResult) {
                     Swal.fire({
                         title: 'Ingrese su clave',
                         input: 'password',
-                        inputPlaceholder: 'Clave secreta',
+                        inputPlaceholder: 'Ingrese Clave de Acceso',
                         inputAttributes: { autocapitalize: 'off' },
                         showCancelButton: true,
                         confirmButtonText: 'Acceder',
