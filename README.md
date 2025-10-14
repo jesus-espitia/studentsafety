@@ -131,7 +131,7 @@ La redundancia de nombres acelera las operaciones de inserción.
 La base de datos **`student_safety_db`** mantiene un equilibrio entre normalización y eficiencia.  
 Soporta adecuadamente las funciones del sistema: control de acceso, trazabilidad y validación segura mediante QR y credenciales.
 
-=======================================================================================================
+===========================================================================
 
 
 # RUTAS 🌐
