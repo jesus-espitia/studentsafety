@@ -1,13 +1,22 @@
+# PROBLEMATICA 🤔
+La problemática del proyecto en la Institución Educativa La Independencia surge por la falta de un sistema automatizado y confiable para el control de ingreso y asistencia de los estudiantes, egresados y personal administrativo.
+Actualmente, los registros se realizan de forma manual, lo que provoca retrasos, pérdida de información y dificultad para verificar la identidad de quienes ingresan o salen del plantel. Esta situación afecta la seguridad institucional y la organización de los datos, además de complicar el seguimiento de las citas o visitas que se realizan dentro de la institución.
+Por eso, se crea el proyecto “student safety”, con el fin de ofrecer una solución tecnológica moderna y segura, que permita llevar un control preciso, rápido y ordenado mediante el uso de códigos QR y registros digitales.
+
+===========================================================================
+
+
 # 🧠 Base de Datos `student_safety_db`
 
-## 📘 Descripción general
-La base de datos **`student_safety_db`** fue diseñada para un sistema de control de ingreso y asistencia institucional basado en **códigos QR**, utilizado por estudiantes, egresados y personal administrativo.  
-Su objetivo es permitir un **registro automatizado, seguro y verificable** de cada persona que ingresa a la institución, con controles de acceso diferenciados y trazabilidad de las asistencias y citas.
+## Descripción
+La base de datos [**`student_safety_db`**](app/student_safety_db.sql) fue diseñada para un sistema de control de ingreso y asistencia institucional basado en **códigos QR**, utilizado por estudiantes, egresados y personal administrativo.  
+Su objetivo es permitir un **registro automatizado, seguro y verificable** de cada persona que ingresa a la institución, con controles de acceso diferenciados y trazabilidad de las asistencias y citas. 
+La base de datos soporta adecuadamente las funciones del sistema: control de acceso, trazabilidad y validación segura mediante QR y credenciales.
 
 ---
 
 ## 🧩 Estructura general
-La base de datos se compone de cinco tablas principales:
+- tablas principales:
 
 1. `DIRECTRICES`
 2. `GRADO_GRUPO`
@@ -19,7 +28,7 @@ Estas tablas están relacionadas entre sí mediante **claves foráneas**, asegur
 
 ---
 
-## 🧱 1. Tabla `DIRECTRICES`
+##  1. Tabla `DIRECTRICES`
 
 **Propósito:**  
 Almacena los datos de las directrices o personal administrativo responsable de cada grupo y de la gestión de citas.
@@ -32,8 +41,7 @@ Almacena los datos de las directrices o personal administrativo responsable de c
 - `nota`: Campo opcional.
 - `clave_directriz`: Contraseña del área administrativa.
 
-**Relaciones:**  
-Se conecta con `GRADO_GRUPO` y `CITA`.
+
 
 ---
 
@@ -47,8 +55,6 @@ Define los grupos académicos y los asocia con su directriz.
 - `grado_grupo`: Identificador del grupo.
 - `director_id`: Clave foránea a `DIRECTRICES(id_directrices)`.
 
-**Relación:**  
-Una directriz puede dirigir varios grupos (1:N).
 
 ---
 
@@ -64,8 +70,6 @@ Contiene estudiantes y egresados.
 - `tipo_personas`: ENUM('estudiante', 'egresado').
 - `grado_grupo_id`: FK a `GRADO_GRUPO(id_grado_grado)`.
 
-**Relación:**  
-Un grupo puede tener muchos estudiantes, los egresados no requieren grupo.
 
 ---
 
@@ -81,9 +85,6 @@ Registra las citas entre directrices y personas.
 - `directrizEncargado_id`: FK a `DIRECTRICES`.
 - `personaCitada_id`: FK a `PERSONAS`.
 
-**Relación:**  
-Una directriz puede tener múltiples citas (1:N).
-
 ---
 
 ## 🕓 5. Tabla `ASISTENCIA`
@@ -98,8 +99,8 @@ Registra cada ingreso mediante QR.
 - `persona_id`: FK hacia `PERSONAS(documento_persona)`.
 
 **Observación:**  
-La redundancia de nombres acelera las operaciones de inserción.
-
+- La redundancia de nombres acelera las operaciones de inserción.
+- Falta claridad en el uso de la tabla.
 ---
 
 ## 🔗 Relaciones entre tablas
@@ -125,11 +126,7 @@ La redundancia de nombres acelera las operaciones de inserción.
    - Tabla `ROL` para permisos.  
    - Índices en `documento_persona` y `fechaHora`.
 
----
 
-## 🧾 Conclusión
-La base de datos **`student_safety_db`** mantiene un equilibrio entre normalización y eficiencia.  
-Soporta adecuadamente las funciones del sistema: control de acceso, trazabilidad y validación segura mediante QR y credenciales.
 
 ===========================================================================
 
