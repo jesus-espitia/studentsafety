@@ -199,6 +199,54 @@ git config --global user.name "Tu Nombre"
 git config --global user.email "tucorreo@example.com"
 ```
 
+---
+
+## 🧰 4. INSTALAR LAS LIBRERÍAS DE PYTHON
+
+Una vez finalizado todo el proceso anterior, se deben instalar las **librerías de Python** necesarias para el correcto funcionamiento del código.
+
+1. Abre **Visual Studio Code**.  
+2. Presiona las teclas **Ctrl + J** para abrir la **terminal integrada**.  
+3. Verifica que la ruta sea similar a:  
+   ```
+   PS C:\Users\YO\Downloads\repo\studentsafety\app>
+   ```
+   Si en la última parte **no aparece "app"**, ingresa con el siguiente comando:
+   ```bash
+   cd app
+   ```
+4. Cuando estés dentro de la carpeta `app`, ejecuta el siguiente comando:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   Esto instalará todas las librerías listadas en el archivo `requirements.txt`.
+
+---
+
+## 🧱 5. CONFIGURAR LA BASE DE DATOS EN PHPMYADMIN
+
+1. Abre tu navegador y entra en:  
+   👉 [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
+2. En la parte superior derecha, haz clic en la opción **“SQL”**.  
+3. Abre el archivo llamado [**`student_safety_db`**](app/student_safety_db.sql), copia su contenido y pégalo en el editor SQL de phpMyAdmin.  
+4. Ejecuta el script de una de las siguientes formas:
+   - Haciendo clic en el botón **“Continuar”** (ubicado en la parte inferior derecha).  
+   - O presionando **Ctrl + Enter** desde el teclado.
+
+✅ Con esto, tu entorno de desarrollo y la base de datos quedarán correctamente configurados.
+
+===========================================================================
+# HERRAMIENTAS, ICONOS, IMAGENES ETC... ⚙️🖼️🎞️
+
+## Paleta de colores
+
+![PALETA DE COLORES](informacion/img/tools/paleta_de_colores.png "PALETA DE COLORES")
+
+--- 
+
+## Icono del proyecto "**student safety**"
+
+![ICONO](informacion/img/tools/logo.png " ICONO ")
 ===========================================================================
 
 
@@ -224,3 +272,22 @@ git config --global user.email "tucorreo@example.com"
     ![GENERAR_QR](informacion/img/CAP/generador_qr.png "GENERAR_QR")
     - "**/reportes_asistencias**" [Consulta todo los grados y sus directores y muestra en la interfaz para que el administrador pueda elegir uno y descagar un excel con esta infromacion.](app/templates/reportes_asistencias.html)
     ![REPORTES_ASISTENCIAS](informacion/img/CAP/reportes_asistencias.png "REPORTES_ASISTENCIAS")
+
+===========================================================================
+
+# 💾 RECOMENDACIONES DE MIGRACIÓN DE BASE DE DATOS Y ENTORNO
+
+---
+
+## 🗄️ Migración de la base de datos
+Se recomienda **migrar la base de datos a SQL Server**, en cualquier versión disponible, para que se integre de una forma más precisa y eficiente en **entornos laborales**.
+
+---
+
+## ⚙️ Migración de la lógica y los lenguajes
+La parte correspondiente a la **lógica de negocio y los lenguajes** debe migrarse hacia un **servidor de producción** con la capacidad adecuada para soportar las operaciones requeridas.
+
+---
+
+## 🧪 Entornos de prueba
+Se recomienda utilizar **entornos virtuales** para realizar pruebas y evitar afectar el entorno de producción.
