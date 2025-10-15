@@ -291,3 +291,9 @@ La parte correspondiente a la **lógica de negocio y los lenguajes** debe migrar
 
 ## 🧪 Entornos de prueba
 Se recomienda utilizar **entornos virtuales** para realizar pruebas y evitar afectar el entorno de producción.
+
+===========================================================================
+
+# DERECHOS DEL PROYECTO ©️
+
+[STUDENT SAFETY](informacion/Derechos/Derechos_StudentSafety.pdf) 👈🏻
