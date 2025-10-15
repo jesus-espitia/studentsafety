@@ -128,154 +128,76 @@ Registra cada ingreso mediante QR.
 
 ===========================================================================
 
-# HERRAMIENTAS Y PROGRAMAS REQUERIDOS (INSTALACION) 📚
+# HERRAMIENTAS Y PROGRAMAS REQUERIDOS (INSTALACIÓN) 📚
 
-
+---
 
 ## 🐍 1. INSTALAR PYTHON (con PATH y funciones)
-- Paso 1: Descargar
 
-Ve a 👉 https://www.python.org/downloads/
+### Paso 1: Descargar
+Ve a 👉 [https://www.python.org/downloads/](https://www.python.org/downloads/)  
+Descarga la versión más reciente.
 
-Descarga la versión más reciente 
+### Paso 2: Instalar
+Abre el instalador.  
 
-- Paso 2: Instalar
+**MUY IMPORTANTE:** marca la casilla que dice:  
+✅ `Add Python 3.x to PATH`
 
-Abre el instalador.
-
-MUY IMPORTANTE: marca la casilla que dice
-✅ “Add Python 3.x to PATH”
-
-Haz clic en Install Now.
-
+Haz clic en **Install Now**.  
 Espera a que termine y cierra.
 
 ---
 
 ## 💻 2. INSTALAR VISUAL STUDIO CODE (VS Code con Python)
-- Paso 1: Descargar
 
-👉 https://code.visualstudio.com/
+### Paso 1: Descargar
+👉 [https://code.visualstudio.com/](https://code.visualstudio.com/)
 
-- Paso 2: Instalar
+### Paso 2: Instalar
+Durante la instalación marca estas casillas:  
+✅ Add to PATH  
+✅ Register Code as an editor for supported file types  
+✅ Add “Open with Code” to right-click menu  
 
-Durante la instalación marca estas casillas:
-✅ Add to PATH
-✅ Register Code as an editor for supported file types
-✅ Add “Open with Code” to right-click menu
+Luego haz clic en **Next → Install**.
 
-Luego haz clic en Next → Install.
-
-- Paso 3: Instalar la extensión de Python
-
-Abre VS Code.
-
-En el lado izquierdo, haz clic en el ícono de extensiones (cuadrito con esquinas).
-
-Busca “Python” y selecciona la que diga Microsoft.
-
-Presiona Instalar.
+### Paso 3: Instalar la extensión de Python
+1. Abre **VS Code**.  
+2. En el lado izquierdo, haz clic en el ícono de **extensiones** (cuadrito con esquinas).  
+3. Busca **"Python"** y selecciona la que diga **Microsoft**.  
+4. Presiona **Instalar**.  
 ✅ ¡Listo!
 
-- Paso 4: Vincular Python con VS Code
-
-Abre un archivo .py.
-
-En la parte inferior derecha, haz clic en Seleccionar intérprete.
-
-Elige el Python que instalaste (Python 3.12 (C:\Users\...Python3x\python.exe) ).
+### Paso 4: Vincular Python con VS Code
+1. Abre un archivo `.py`.  
+2. En la parte inferior derecha, haz clic en **Seleccionar intérprete**.  
+3. Elige el Python que instalaste (por ejemplo: `Python 3.12 (C:\Users\...Python3x\python.exe)`).
 
 ---
 
 ## 🧩 3. INSTALAR GIT (y configurarlo)
-- Paso 1: Descargar
 
-👉 https://git-scm.com/downloads
+### Paso 1: Descargar
+👉 [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
-- Paso 2: Instalar
+### Paso 2: Instalar
+Durante la instalación:  
+Deja casi todo por defecto.  
 
-Durante la instalación:
-
-Deja casi todo por defecto.
-
-Cuando aparezca la opción “Adjusting your PATH environment”, selecciona:
+Cuando aparezca la opción **“Adjusting your PATH environment”**, selecciona:  
 ✅ “Git from the command line and also from 3rd-party software”
 
 Continúa hasta el final y termina la instalación.
 
-- Paso 3: Verificar
+### Paso 3: Verificar
+Abre **CMD o PowerShell** y escribe:
 
-Abre CMD o PowerShell:
-
-1. git --version
-2. git config --global user.name "Tu Nombre"
-3. git config --global user.email "tucorreo@example.com"
-
----
-
-# 🧱 4. INSTALAR XAMPP (revisar puertos)
-- Paso 1: Descargar
-
-👉 https://www.apachefriends.org/es/index.html
-
-- Paso 2: Instalar
-
-Abre el instalador.
-
-Deja seleccionados Apache, MySQL, PHP, y phpMyAdmin.
-
-Instala normalmente.
-
-Al terminar, abre el XAMPP Control Panel.
-
-- Paso 3: Encender servicios
-
-En el panel, presiona:
-
-Start en Apache
-
-Start en MySQL
-
-Ambos deben mostrar “Running” en verde ✅.
-
-- Paso 4: Verificar puertos
-
-Por defecto:
-
-Apache usa el puerto 80
-
-MySQL usa el puerto 3306
-
-Si alguno no arranca, probablemente el puerto está ocupado.
-
-Para revisar, abre CMD y escribe:
-
-netstat -ano | findstr :80
-netstat -ano | findstr :3306
-
-
-~**Si aparece un número de PID, significa que otro programa usa ese puerto.**~
-
-- Paso 5: Cambiar el puerto (si es necesario)
-
-Si Apache no arranca:
-
-En XAMPP, haz clic en Config → Apache (httpd.conf).
-
-Busca Listen 80 y cámbialo por Listen 8080.
-
-Busca ServerName localhost:80 y cambia por ServerName localhost:8080.
-
-Guarda y reinicia Apache.
-Luego entra a:
-👉 http://localhost:8080/
-
-- Paso 6: Probar base de datos
-
-Abre en el navegador:
-
-http://localhost/phpmyadmin/
-
+```bash
+git --version
+git config --global user.name "Tu Nombre"
+git config --global user.email "tucorreo@example.com"
+```
 
 ===========================================================================
 
